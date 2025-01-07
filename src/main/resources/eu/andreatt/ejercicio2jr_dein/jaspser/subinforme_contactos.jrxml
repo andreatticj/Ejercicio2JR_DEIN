@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subinforme_contactos" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2d986ddf-f0f2-4fed-aa6d-2e4741f0ee27">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Contra Docker en local - PERSONAS"/>
+	<parameter name="dni" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT telefono, email 
+        FROM agenda.telefono
+        JOIN agenda.email ON agenda.telefono.dni = agenda.email.dni
+        WHERE agenda.telefono.dni = $P{dni}]]>
+	</queryString>
+	<field name="telefono" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<title>
+		<band height="40">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="250" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="f917dab4-8602-458c-a69e-74a036ef3588"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[email]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="295" y="1" width="250" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="fb244733-ed5c-4d97-80a2-ccc2777fe194"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[telefono]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="20">
+			<textField>
+				<reportElement x="294" y="0" width="250" height="20" uuid="71c2f180-23ac-45cb-b90a-8a296e9f4bbc"/>
+				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="250" height="20" uuid="ba6eb1f7-7192-4867-851d-fd62e7eeaf00"/>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
