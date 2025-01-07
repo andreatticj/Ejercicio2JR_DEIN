@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.andreatt.ejercicio2jr_dein.controller.Ejercicio2Controller">
+<BorderPane prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.andreatt.ejercicio2jr_dein.controller.Ejercicio2Controller">
    <top>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="INFORMES" BorderPane.alignment="CENTER">
          <font>
@@ -36,7 +36,7 @@
         </rowConstraints>
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ELIGE EL INFORME QUE QUUIERES VISUALIZAR:" GridPane.columnSpan="2" />
-            <RadioButton fx:id="rbInformePersonas" mnemonicParsing="false" onAction="#abrir" selected="true" text="Informe personas" GridPane.columnSpan="2" GridPane.rowIndex="1">
+            <RadioButton fx:id="rbInformePersonas" mnemonicParsing="false" selected="true" text="Informe personas" GridPane.columnSpan="2" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="15.0" />
                </GridPane.margin>
@@ -44,12 +44,12 @@
                   <ToggleGroup fx:id="personas" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="rbInformePersonasCalculos" mnemonicParsing="false" onAction="#abrir" text="Informe personas con calculos" toggleGroup="$personas" GridPane.columnSpan="2" GridPane.rowIndex="2">
+            <RadioButton fx:id="rbInformePersonasCalculos" mnemonicParsing="false" text="Informe personas con calculos" toggleGroup="$personas" GridPane.columnSpan="2" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="15.0" />
                </GridPane.margin>
             </RadioButton>
-            <RadioButton fx:id="rbInforomePersoanasSubinformes" mnemonicParsing="false" onAction="#abrir" text="Informe personas con subinformes" toggleGroup="$personas" GridPane.columnSpan="2" GridPane.rowIndex="3">
+            <RadioButton fx:id="rbInforomePersoanasSubinformes" mnemonicParsing="false" text="Informe personas con subinformes" toggleGroup="$personas" GridPane.columnSpan="2" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets left="15.0" />
                </GridPane.margin>

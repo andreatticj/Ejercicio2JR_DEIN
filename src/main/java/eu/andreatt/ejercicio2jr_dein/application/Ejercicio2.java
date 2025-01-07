@@ -19,7 +19,7 @@ public class Ejercicio2 extends Application {
         @Override
         public void start(Stage stage) throws IOException {
             FXMLLoader fxmlLoader = new FXMLLoader(Ejercicio2.class.getResource("/eu/andreatt/ejercicio2jr_dein/fxml/Ejercicio2.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 500, 450);
+            Scene scene = new Scene(fxmlLoader.load());
             stage.setMinHeight(300);
             stage.setMinWidth(350);
             stage.setResizable(false);
