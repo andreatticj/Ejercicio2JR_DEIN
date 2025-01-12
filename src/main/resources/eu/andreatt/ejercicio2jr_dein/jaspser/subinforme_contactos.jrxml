@@ -1,28 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subinforme_contactos" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2d986ddf-f0f2-4fed-aa6d-2e4741f0ee27">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subinforme_contactos" pageWidth="542" pageHeight="842" columnWidth="542" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="2d986ddf-f0f2-4fed-aa6d-2e4741f0ee27">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Contra Docker en local - PERSONAS"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
 	<parameter name="dni" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[SELECT telefono, email 
-        FROM agenda.telefono
-        JOIN agenda.email ON agenda.telefono.dni = agenda.email.dni
-        WHERE agenda.telefono.dni = $P{dni}]]>
+		<![CDATA[SELECT 
+				    t.telefono, 
+				    e.email 
+				FROM 
+				    agenda.telefono t
+				LEFT JOIN 
+				    agenda.email e ON t.dni = e.dni
+				WHERE 
+				    t.dni = $P{dni}
+				UNION
+				SELECT 
+				    t.telefono, 
+				    e.email 
+				FROM 
+				    agenda.email e
+				LEFT JOIN 
+				    agenda.telefono t ON e.dni = t.dni
+				WHERE 
+				    e.dni = $P{dni}]]>
 	</queryString>
 	<field name="telefono" class="java.lang.String"/>
 	<field name="email" class="java.lang.String"/>
 	<title>
-		<band height="40">
+		<band height="20">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="0" width="250" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="f917dab4-8602-458c-a69e-74a036ef3588"/>
-				<textElement textAlignment="Center">
+				<reportElement mode="Opaque" x="14" y="0" width="250" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="f917dab4-8602-458c-a69e-74a036ef3588"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[email]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="295" y="1" width="250" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="fb244733-ed5c-4d97-80a2-ccc2777fe194"/>
-				<textElement textAlignment="Center">
+				<reportElement mode="Opaque" x="279" y="0" width="250" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="fb244733-ed5c-4d97-80a2-ccc2777fe194"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[telefono]]></text>
@@ -32,12 +57,14 @@
 	<detail>
 		<band height="20">
 			<textField>
-				<reportElement x="294" y="0" width="250" height="20" uuid="71c2f180-23ac-45cb-b90a-8a296e9f4bbc"/>
-				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
+				<reportElement x="279" y="0" width="250" height="20" uuid="71c2f180-23ac-45cb-b90a-8a296e9f4bbc"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{telefono} == null || $F{telefono}.isEmpty() ? "" : $F{telefono}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="0" width="250" height="20" uuid="ba6eb1f7-7192-4867-851d-fd62e7eeaf00"/>
-				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+				<reportElement x="14" y="0" width="250" height="20" uuid="ba6eb1f7-7192-4867-851d-fd62e7eeaf00"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{email} == null || $F{email}.isEmpty() ? "" : $F{email}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

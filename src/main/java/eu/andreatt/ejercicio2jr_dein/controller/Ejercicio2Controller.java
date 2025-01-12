@@ -79,7 +79,7 @@ public class Ejercicio2Controller {
         } else if (rbInformePersonasCalculos.isSelected()) {
             openReport("/eu/andreatt/ejercicio2jr_dein/jaspser/ejercicio2_personas_calculos.jasper");
         } else if (rbInforomePersoanasSubinformes.isSelected()) {
-            openReport("/eu/andreatt/ejercicio2jr_dein/jaspser/ejercicio2_personas_subinformes.jasper");
+            openReport("/eu/andreatt/ejercicio2jr_dein/jaspser/ejercicio2_subinforme.jasper");
         }
     }
 
@@ -131,7 +131,7 @@ public class Ejercicio2Controller {
             String imageBasePath = getClass().getResource("/eu/andreatt/ejercicio2jr_dein/images/").toString();
             String jasperBasePath = getClass().getResource("/eu/andreatt/ejercicio2jr_dein/jaspser/").toString();
             parameters.put("REPORT_IMAGE", imageBasePath);
-            parameters.put("REPORT_jasper", jasperBasePath);
+            parameters.put("SUBREPORT_PATH", jasperBasePath);
 
             // Llena el informe con los parámetros y la conexión
             JasperPrint jprint = JasperFillManager.fillReport(report, parameters, conn);
